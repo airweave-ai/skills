@@ -99,12 +99,29 @@ If search returns no results or low-quality matches:
 4. **Check source availability** - The data source might not be connected
 5. **Ask for clarification** - User might have more context to share
 
+## Finding the Search Tool
+
+Airweave MCP tools follow the naming pattern `search-{collection-name}`. Look for tools matching this pattern in your available MCP tools.
+
+**Examples:**
+- `search-acmes-slack-k8v2x1`
+- `search-acmes-notion-p3m9q7`
+- `search-acmes-jira-w5n4r2`
+
+**If no Airweave search tool is available:**
+- The user may not have Airweave MCP configured
+- Ask if they have Airweave set up and connected to their AI assistant
+- Suggest using the `airweave-setup` skill for configuration help
+
+**Multiple collections:**
+If multiple `search-*` tools are available, choose based on the collection name and the user's request. If unclear which to use, ask the user or try the most general-sounding one first.
+
 ## Calling the Search Tool
 
 Use the `search-{collection}` MCP tool with your chosen parameters:
 
 ```
-search-my-collection({
+search-acmes-slack-k8v2x1({
   query: "customer feedback pricing",
   recency_bias: 0.7,
   limit: 10
@@ -112,7 +129,7 @@ search-my-collection({
 ```
 
 ```
-search-my-collection({
+search-acmes-notion-p3m9q7({
   query: "API authentication docs",
   search_method: "hybrid",
   enable_reranking: true
@@ -120,7 +137,7 @@ search-my-collection({
 ```
 
 ```
-search-my-collection({
+search-acmes-jira-w5n4r2({
   query: "What is our refund policy?",
   response_type: "completion"
 })
